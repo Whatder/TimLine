@@ -41,12 +41,36 @@ public abstract class BaseActivity extends AppCompatActivity {
             mToolbarCommon.setFitsSystemWindows(true);
             //设置标题
             if (getToolbarTitle() != null) setTitle(getToolbarTitle());
+            //设置背景色
+            mToolbarCommon.setBackgroundResource(getToolbarBackground());
+            //设置标题颜色
+            mToolbarCommon.setTitleTextColor(getResources().getColor(getToolbarTitleColor()));
         }
     }
 
+    /**
+     * @return 标题
+     */
     protected String getToolbarTitle() {
         return null;
     }
 
+    /**
+     * @return 标题颜色
+     */
+    protected int getToolbarTitleColor() {
+        return R.color.grey50;
+    }
+
+    /**
+     * @return toolbar背景res
+     */
+    protected int getToolbarBackground() {
+        return R.drawable.bg_toolbar;
+    }
+
+    /**
+     * @return 布局
+     */
     protected abstract int getLayoutId();
 }

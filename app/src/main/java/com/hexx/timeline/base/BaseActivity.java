@@ -79,4 +79,14 @@ public abstract class BaseActivity<P extends BasePresenter>
     protected abstract int getLayoutId();
 
     protected abstract P getPresenter();
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
 }

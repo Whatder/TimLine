@@ -11,8 +11,11 @@ import com.hexx.timeline.model.MainModel;
 public class MainPresenter extends BasePresenter<IMainContract.IMainView, IMainContract.IMainModel> {
     public MainPresenter(IMainContract.IMainView view) {
         super(view);
-        MainModel mainModel = new MainModel();
-        attach(mainModel);
+    }
+
+    @Override
+    protected IMainContract.IMainModel attachModel() {
+        return new MainModel();
     }
 
     public void getInfo() {

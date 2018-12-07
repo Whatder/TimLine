@@ -1,6 +1,5 @@
 package com.hexx.timeline;
 
-import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -39,13 +38,5 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainCo
     @Override
     public void succ(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void showLoading() {
-    }
-
-    @Override
-    public void hideLoading() {
     }
 }

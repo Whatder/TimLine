@@ -7,7 +7,7 @@ import com.hexx.timeline.base.IContract;
  * Desc：
  */
 public interface IMainContract {
-    interface IMainView extends IContract.IBaseView, IContract.IModel {
+    interface IMainView extends IContract.IBaseView {
         void succ(String msg);
     }
 

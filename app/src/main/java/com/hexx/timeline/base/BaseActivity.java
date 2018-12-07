@@ -16,13 +16,17 @@ import butterknife.ButterKnife;
  * Created by Hexx on 2018/11/5 13:39
  * Desc：
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity<P extends BasePresenter>
+        extends AppCompatActivity implements IContract.IBaseView {
     @BindView(R.id.toolbar_common)
     Toolbar mToolbarCommon;
+
+    protected P mPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mPresenter = getPresenter();
         setContentView(getLayoutId());
         ButterKnife.bind(this);
         initToolbar();
@@ -73,4 +77,6 @@ public abstract class BaseActivity extends AppCompatActivity {
      * @return 布局
      */
     protected abstract int getLayoutId();
+
+    protected abstract P getPresenter();
 }

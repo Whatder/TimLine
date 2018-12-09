@@ -3,6 +3,7 @@ package com.hexx.timeline.base;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -22,6 +23,7 @@ public abstract class BaseActivity<P extends BasePresenter>
     Toolbar mToolbarCommon;
 
     protected P mPresenter;
+    private AlertDialog mLoading;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,11 +84,16 @@ public abstract class BaseActivity<P extends BasePresenter>
 
     @Override
     public void showLoading() {
-
+        if (mLoading == null) {
+            mLoading = new AlertDialog.Builder(this).setMessage("Loading...").create();
+        }
+        mLoading.show();
     }
 
     @Override
     public void hideLoading() {
-
+        if (mLoading!=null&&mLoading.isShowing()) {
+            mLoading.dismiss();
+        }
     }
 }

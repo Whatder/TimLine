@@ -19,6 +19,7 @@ import butterknife.ButterKnife;
  */
 public abstract class BaseActivity<P extends BasePresenter>
         extends AppCompatActivity implements IContract.IBaseView {
+    @Nullable
     @BindView(R.id.toolbar_common)
     Toolbar mToolbarCommon;
 
@@ -38,12 +39,12 @@ public abstract class BaseActivity<P extends BasePresenter>
      * 初始化toolbar（如果有）
      */
     private void initToolbar() {
+        View decorView = getWindow().getDecorView();
+        //状态栏透明
+        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+        getWindow().setStatusBarColor(Color.TRANSPARENT);
         if (mToolbarCommon != null) {
             setSupportActionBar(mToolbarCommon);
-            View decorView = getWindow().getDecorView();
-            //状态栏透明
-            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-            getWindow().setStatusBarColor(Color.TRANSPARENT);
             mToolbarCommon.setFitsSystemWindows(true);
             //设置标题
             if (getToolbarTitle() != null) setTitle(getToolbarTitle());
@@ -92,7 +93,7 @@ public abstract class BaseActivity<P extends BasePresenter>
 
     @Override
     public void hideLoading() {
-        if (mLoading!=null&&mLoading.isShowing()) {
+        if (mLoading != null && mLoading.isShowing()) {
             mLoading.dismiss();
         }
     }

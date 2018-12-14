@@ -1,8 +1,9 @@
-package com.hexx.timeline;
+package com.hexx.timeline.view;
 
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.hexx.timeline.R;
 import com.hexx.timeline.base.BaseActivity;
 import com.hexx.timeline.contract.IMainContract;
 import com.hexx.timeline.presenter.MainPresenter;

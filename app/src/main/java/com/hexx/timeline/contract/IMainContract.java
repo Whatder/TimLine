@@ -11,7 +11,7 @@ public interface IMainContract {
         void succ(String msg);
     }
 
-    interface IMainModel extends IContract.IModel {
+    interface IMainBaseModel extends IContract.IBaseModel {
         String getInfo(String str);
     }
 }

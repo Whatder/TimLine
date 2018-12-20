@@ -2,20 +2,20 @@ package com.hexx.timeline.presenter;
 
 import com.hexx.timeline.base.BasePresenter;
 import com.hexx.timeline.contract.ILauncherContract;
-import com.hexx.timeline.model.LauncherModel;
+import com.hexx.timeline.model.LauncherBaseModel;
 
 /**
  * Created by Hexx on 2018/12/14 18:49
  * Desc：
  */
-public class LauncherPresenter extends BasePresenter<ILauncherContract.ILauncherView, ILauncherContract.ILauncherModel> {
+public class LauncherPresenter extends BasePresenter<ILauncherContract.ILauncherView, ILauncherContract.ILauncherBaseModel> {
     public LauncherPresenter(ILauncherContract.ILauncherView view) {
         super(view);
     }
 
     @Override
-    protected ILauncherContract.ILauncherModel attachModel() {
-        return new LauncherModel();
+    protected ILauncherContract.ILauncherBaseModel attachModel() {
+        return new LauncherBaseModel();
     }
 
     public void checkRadon() {

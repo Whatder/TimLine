@@ -11,7 +11,7 @@ public interface IContract {
         void hideLoading();
     }
 
-    interface IModel {
+    interface IBaseModel {
 
     }
 }

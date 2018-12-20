@@ -13,7 +13,7 @@ public interface ILauncherContract {
         void startError();
     }
 
-    interface ILauncherModel extends IContract.IModel {
+    interface ILauncherBaseModel extends IContract.IBaseModel {
         boolean radon(int limit);
     }
 }

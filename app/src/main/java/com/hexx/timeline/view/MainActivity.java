@@ -28,6 +28,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainCo
     Button mBtn;
     @BindView(R.id.rv_time_list)
     RecyclerView mRvTimeList;
+    CommonAdapter<String, Holder> mAdapter;
+
 
     public static void start(Context context) {
         Intent starter = new Intent(context, MainActivity.class);
@@ -54,8 +56,20 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainCo
         mPresenter.getInfo();
     }
 
+
+    @Override
+    protected void initView() {
+        mAdapter = new CommonAdapter<String, Holder>(this) {
+            @Override
+            public Holder getHolder(ViewGroup viewGroup) {
+                return new Holder(viewGroup);
+            }
+        };
+        mRvTimeList.setLayoutManager(new LinearLayoutManager(this));
+        mRvTimeList.setAdapter(mAdapter);
+    }
+
     List<String> data = new ArrayList<>();
-    CommonAdapter<String, Holder> adapter;
 
     @Override
     public void succ(String msg) {
@@ -63,17 +77,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainCo
         for (int i = 0; i < 10; i++) {
             data.add(String.format(Locale.CHINA, "This is item %d", i));
         }
-        if (adapter == null) {
-            mRvTimeList.setLayoutManager(new LinearLayoutManager(this));
-            adapter = new CommonAdapter<String, Holder>(this) {
-                @Override
-                public Holder getHolder(ViewGroup viewGroup) {
-                    return new Holder(viewGroup);
-                }
-            };
-            mRvTimeList.setAdapter(adapter);
-        }
-        adapter.add(data);
+        mAdapter.add(data);
 
     }
 

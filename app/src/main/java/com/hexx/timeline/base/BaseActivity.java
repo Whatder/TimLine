@@ -33,6 +33,7 @@ public abstract class BaseActivity<P extends BasePresenter>
         setContentView(getLayoutId());
         ButterKnife.bind(this);
         initToolbar();
+        initView();
     }
 
     /**
@@ -82,6 +83,9 @@ public abstract class BaseActivity<P extends BasePresenter>
     protected abstract int getLayoutId();
 
     protected abstract P getPresenter();
+
+    protected void initView() {
+    }
 
     @Override
     public void showLoading() {

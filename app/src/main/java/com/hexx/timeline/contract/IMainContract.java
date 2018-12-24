@@ -9,6 +9,8 @@ import com.hexx.timeline.base.IContract;
 public interface IMainContract {
     interface IMainView extends IContract.IBaseView {
         void succ(String msg);
+
+        void del(int index);
     }
 
     interface IMainBaseModel extends IContract.IBaseModel {

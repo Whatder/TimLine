@@ -24,4 +24,8 @@ public class MainPresenter extends BasePresenter<IMainContract.IMainView, IMainC
         mView.hideLoading();
         mView.succ(result);
     }
+
+    public void remove(int index) {
+        mView.del(index);
+    }
 }

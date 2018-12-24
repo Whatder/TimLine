@@ -30,12 +30,6 @@ public abstract class CommonAdapter<D, H extends CommonAdapter.BaseHolder<D>>
 
     public abstract H getHolder(ViewGroup viewGroup);
 
-    public void add(List<D> data) {
-        int lastPosition = mData.size();
-        mData.addAll(data);
-        notifyItemRangeChanged(lastPosition, mData.size() - lastPosition);
-    }
-
     @NonNull
     @Override
     public H onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -50,6 +44,24 @@ public abstract class CommonAdapter<D, H extends CommonAdapter.BaseHolder<D>>
     @Override
     public int getItemCount() {
         return mData.size();
+    }
+
+
+    public void add(List<D> data) {
+        int lastPosition = mData.size();
+        mData.addAll(data);
+        notifyItemRangeChanged(lastPosition, mData.size() - lastPosition);
+    }
+
+    public void add(D data) {
+        int lastPosition = mData.size();
+        mData.add(data);
+        notifyItemRangeChanged(lastPosition, mData.size() - lastPosition);
+    }
+
+    public void remove(int index) {
+        notifyItemRemoved(index);
+        mData.remove(index);
     }
 
     public abstract static class BaseHolder<D> extends RecyclerView.ViewHolder {

@@ -65,6 +65,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainCo
     @Override
     public void succ(String msg) {
         mAdapter.add(msg);
+        mRvTimeList.smoothScrollToPosition(mAdapter.getItemCount() - 1);
     }
 
     @Override
